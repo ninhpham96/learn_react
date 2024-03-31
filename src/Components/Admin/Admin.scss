@@ -1,3 +1,10 @@
 .admin-container{
+    position: relative;
     display: flex;
+    height: 100vh;
+    .admin-sidebar{
+        position: relative;
+        height: 500px ;
+        color: green;
+    }
 }
