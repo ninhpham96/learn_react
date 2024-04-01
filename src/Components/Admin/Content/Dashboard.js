@@ -1,5 +1,5 @@
 const Dashboard = (props) => {
-  return <div> Dashboard</div>;
+  return <div> đây là Dashboard</div>;
 };
 
 export default Dashboard;

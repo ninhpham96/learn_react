@@ -34,14 +34,11 @@ function MySideBar() {
               />
             </div>
           </MenuItem>
-          <MenuItem icon={<RxDashboard />}>
-            {" "}
-            <Link to="/admins" />
+          <MenuItem component={<Link to="/admins" />} icon={<RxDashboard />}>
             Dashboard
           </MenuItem>
           <SubMenu label="ManagerUser" icon={<FcManager size={"1.5em"} />}>
-            <MenuItem>
-              <Link to="/admins/manager-user" />
+            <MenuItem component={<Link to="/admins/manager-user" />}>
               Quản lý người dùng
             </MenuItem>
             <MenuItem>Quản lý bài kiểm tra</MenuItem>
