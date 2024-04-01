@@ -33,7 +33,6 @@ body{
                 background: black;
             }
         }
-
         .navbar{
             padding-top: 20px;
             z-index: 10;
@@ -69,6 +68,7 @@ body{
                 background: #303030;
                 color: white;
                 height: 40px;
+                border: none;
                 &:hover{
                     background: black;
                 }
@@ -77,6 +77,7 @@ body{
     }
 }
 }
+
 video{
     position:fixed;
     top: 150px;

@@ -8,6 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./Components/Home/Homepage";
+import ManagerUser from "./Components/Admin/Content/ManagerUser";
+import Dashboard from "./Components/Admin/Content/Dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 document.title = "Learn React";
@@ -19,7 +21,10 @@ root.render(
           <Route index element={<HomePage />} />
           <Route path="/users" element={<User />} />
         </Route>
-        <Route path="/admins" element={<Admin />} />
+        <Route path="/admins" element={<Admin />}>
+          <Route index element={<Dashboard />} />
+          <Route path="manager-user" element={<ManagerUser />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

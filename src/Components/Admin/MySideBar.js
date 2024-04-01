@@ -1,63 +1,55 @@
-// import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-// import sidebarBg from "../../assets/bg2.jpg";
-// const MySideBar = (props) => {
-//   const { collapsed } = props;
-//   return (
-//     <>
-//       <Sidebar collapsed={collapsed} image={sidebarBg}>
-//         <Menu>
-//           <SubMenu label="Charts">
-//             <MenuItem> Pie charts </MenuItem>
-//             <MenuItem> Line charts </MenuItem>
-//           </SubMenu>
-//           <MenuItem> Documentation </MenuItem>
-//           <MenuItem> Calendar </MenuItem>
-//           <MenuItem active={false} disabled={false}></MenuItem>
-//           <MenuItem> </MenuItem>
-//           <MenuItem> </MenuItem>
-//         </Menu>
-//       </Sidebar>
-//     </>
-//   );
-// };
-// export default MySideBar;
-
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-// import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-// import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-// import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-// import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-// import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-// import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-// import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import sidebarBg from "../../assets/bg2.jpg";
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { GrUserAdmin } from "react-icons/gr";
+import { RxDashboard } from "react-icons/rx";
+import { FcManager } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 function MySideBar() {
+  const [showhideEle, setShowhideEle] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   return (
-    <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
-      <Sidebar style={{ height: "100vh" }}>
+    <>
+      <Sidebar
+        collapsed={collapsed}
+        image={sidebarBg}
+        style={{ height: "100vh" }}
+      >
         <Menu>
-          <MenuItem
-            // icon={<MenuOutlinedIcon />}
-            style={{ textAlign: "center" }}
-          >
-            {" "}
-            <h2>Admin</h2>
+          <MenuItem>
+            <div
+              className="farbar-wrap"
+              style={({ textAlign: "center" }, { display: "flex" })}
+            >
+              {showhideEle && <GrUserAdmin size={"1.5em"} />}
+              {showhideEle && <h2>Admin</h2>}
+              <FaBars
+                className="farbar"
+                onClick={() => {
+                  setShowhideEle(!showhideEle);
+                  setCollapsed(!collapsed);
+                }}
+              />
+            </div>
           </MenuItem>
-
-          <MenuItem>Home</MenuItem>
-          <MenuItem>Team</MenuItem>
-          <MenuItem>Contacts</MenuItem>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>FAQ</MenuItem>
-          <MenuItem>Calendar</MenuItem>
+          <MenuItem icon={<RxDashboard />}>
+            {" "}
+            <Link to="/admins" />
+            Dashboard
+          </MenuItem>
+          <SubMenu label="ManagerUser" icon={<FcManager size={"1.5em"} />}>
+            <MenuItem>
+              <Link to="/admins/manager-user" />
+              Quản lý người dùng
+            </MenuItem>
+            <MenuItem>Quản lý bài kiểm tra</MenuItem>
+            <MenuItem>Quản lý câu hỏi</MenuItem>
+          </SubMenu>
         </Menu>
       </Sidebar>
-      <main>
-        <h1 style={{ color: "white", marginLeft: "5rem" }}>
-          React-Pro-Sidebar
-        </h1>
-      </main>
-    </div>
+    </>
   );
 }
 

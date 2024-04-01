@@ -3,8 +3,25 @@
     display: flex;
     height: 100vh;
     .admin-sidebar{
-        position: relative;
-        height: 500px ;
+        display: flex;
+        height: "100vh";
         color: green;
+        .farbar-wrap {
+            align-items: center;
+            justify-content: space-evenly;
+            .farbar{
+                color: green;
+            }
+        }
+    }
+    .admin-content{
+        width: 100%;
+        .admin-header{
+            height: 40px;
+            border: 1px solid green;
+        }
+        .admin-content{
+            border: 1px solid red;
+        }
     }
 }

@@ -1,22 +1,18 @@
 import MySideBar from "./MySideBar";
 import "./Admin.scss";
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 const Admin = (props) => {
-  const [collapsed, setCollapsed] = useState(false);
   return (
     <div className="admin-container">
       <div className="admin-sidebar">
-        <MySideBar collapsed={collapsed} />
+        <MySideBar />
       </div>
       <div className="admin-content">
-        <button
-          className="btn btn-primary"
-          onClick={() => setCollapsed(!collapsed)}
-        >
-          Collapsed
-        </button>
-        Đây là phần nội dung
+        <div className="admin-header"></div>
+        <div className="admin-main">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
