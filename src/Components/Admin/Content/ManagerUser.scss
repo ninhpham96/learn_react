@@ -27,10 +27,12 @@
         }
     }
     .img-preview{
+        display: flex;
         height: 150px;
         border: 1px dashed #ccc;
-        align-content: center;
+        justify-content: center;
         text-align: center;
+        align-items: center;
         color: rgb(172, 172, 172);
     }
 }

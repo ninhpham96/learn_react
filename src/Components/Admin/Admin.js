@@ -14,8 +14,8 @@ const Admin = (props) => {
         <div className="admin-main">
           <Outlet />
         </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
 };

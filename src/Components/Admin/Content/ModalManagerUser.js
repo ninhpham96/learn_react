@@ -51,12 +51,13 @@ const ModalManagerUser = (props) => {
     let data = await postCreatenewUser(email, password, username, role, image);
     if (data && data.EC === 0) {
       toast.success(data.EM, { autoClose: 1000 });
+      await props.fetchAllUsers();
+      handleClose();
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM, { autoClose: 1000 });
-      return;
     }
-    handleClose();
+    return;
   };
   return (
     <>
