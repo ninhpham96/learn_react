@@ -1,17 +1,36 @@
 .manager-user-container{
-    .users-content{
-        color: red;
+    padding: 10px;
+    .title{
+        font-weight: 600;
+        font-size: 20px;
     }
-    .modal-add-user{
-        color: red;
-        .img-preview{
-            height: 150px;
-            border: 1px dashed #ccc;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ccc;
+    .users-content{
+        .btn-add-new{
+            margin: 15px 0px;
         }
+    }
+}
+
+.modal-add-user{
+    .label-upload{
+        display: flex;
+        gap: 5px;
+        align-items:center;
+        justify-content: center;
+        width: fit-content;
+        border-radius: 5px;
+        background: #eeeeee;
+        border: none;
+        cursor: pointer;
+        &:hover{
+            color: #757575;
+        }
+    }
+    .img-preview{
+        height: 150px;
+        border: 1px dashed #ccc;
+        align-content: center;
+        text-align: center;
+        color: rgb(172, 172, 172);
     }
 }
