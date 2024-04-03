@@ -1,7 +1,13 @@
 import Table from "react-bootstrap/Table";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
 
-const TableUsers = (props) => {
+const TableUserPaginate = (props) => {
   const { listUsers, handleClickUpdateUser, handleClickDeleteUser } = props;
+  const [pageCount, setPageCount] = useState(0);
+  const handlePageClick = (event) => {
+    console.log(`User requested page number ${event.selected}`);
+  };
   return (
     <>
       <Table striped bordered hover size="sm">
@@ -48,9 +54,30 @@ const TableUsers = (props) => {
               );
             })}
         </tbody>
+        <ReactPaginate
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={3}
+          pageCount={10}
+          renderOnZeroPageCount={null}
+          previousLabel="Previous"
+          nextLabel="Next"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakLabel="..."
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          activeClassName="active"
+          forcePage={3}
+        />
       </Table>
     </>
   );
 };
 
-export default TableUsers;
+export default TableUserPaginate;

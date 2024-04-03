@@ -132,6 +132,7 @@ const ModalUpdateUser = (props) => {
                 type="file"
                 id="labelupload"
                 hidden
+                {...(!checkViewOrUpdate && { disabled: true })}
                 onChange={(event) => handleUploadImage(event)}
               />
             </Row>

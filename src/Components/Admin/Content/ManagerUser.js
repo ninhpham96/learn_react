@@ -2,11 +2,16 @@ import ModalCreateUser from "./ModalCreateUser";
 import TableUsers from "./TableUsers";
 import ModalUpdateUser from "./ModalUpdateUser";
 import { useEffect, useState } from "react";
-import { getAllUsers } from "../../../Services/apiServices";
+import {
+  getAllUsers,
+  getUserWithPaginate,
+} from "../../../Services/apiServices";
 import "./ManagerUser.scss";
 import ModalDeleteUser from "./ModalDeleteUser";
+import TableUserPaginate from "./TableUserPaginate";
 
 const ManagerUser = () => {
+  const LIMIT_USER = 5;
   const [showModalManagerUser, setShowModalManagerUser] = useState(false);
   const [showModalDeleteUser, setShowModalDeleteUser] = useState(false);
   const [showUpdateUser, setShowUpdateUser] = useState(false);
@@ -16,7 +21,8 @@ const ManagerUser = () => {
   const [userDelete, setUserDelete] = useState({});
 
   useEffect(() => {
-    fetchAllUsers();
+    console.log("check");
+    fetchAllUsersWithPaginate(1);
   }, []);
 
   const fetchAllUsers = async () => {
@@ -25,14 +31,24 @@ const ManagerUser = () => {
       setListUsers(res.DT);
     }
   };
+
+  const fetchAllUsersWithPaginate = async (page) => {
+    let res = await getUserWithPaginate(page, LIMIT_USER);
+    console.log(res.DT);
+    if (res && res.EC === 0) {
+      setListUsers(res.DT.users);
+    }
+  };
+
   const handleClickUpdateUser = (user, check) => {
     setUserUpdate(user);
     setShowUpdateUser(true);
     setCheckViewOrUpdate(check);
   };
 
-  const handleClickDeleteUser = () => {
+  const handleClickDeleteUser = async (user) => {
     setShowModalDeleteUser(true);
+    setUserDelete(user);
   };
   return (
     <div className="manager-user-container">
@@ -49,7 +65,7 @@ const ManagerUser = () => {
           </button>
         </div>
         <div className="table-user-container">
-          <TableUsers
+          <TableUserPaginate
             listUsers={listUsers}
             setListUsers={setListUsers}
             handleClickUpdateUser={handleClickUpdateUser}
@@ -74,7 +90,7 @@ const ManagerUser = () => {
         show={showModalDeleteUser}
         setShow={setShowModalDeleteUser}
         userDelete={userDelete}
-        setUserDelete={setUserDelete}
+        fetchAllUsers={fetchAllUsers}
       />
     </div>
   );
