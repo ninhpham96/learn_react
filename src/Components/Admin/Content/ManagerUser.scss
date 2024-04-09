@@ -8,9 +8,14 @@
         .btn-add-new{
             margin: 15px 0px;
         }
+        .table-user-container{
+            .user-pagination{
+                    display: flex;
+                    justify-content: center;                
+            }
+        }
     }
 }
-
 .modal-add-user{
     .label-upload{
         display: flex;

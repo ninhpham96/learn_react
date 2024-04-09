@@ -4,13 +4,13 @@ import { postDeleteUser } from "../../../Services/apiServices";
 import { toast } from "react-toastify";
 
 const ModalDeleteUser = (props) => {
-  const { show, setShow, userDelete, fetchAllUsers } = props;
+  const { show, setShow, userDelete, fetchAllUsersWithPaginate } = props;
   const handleClose = () => setShow(false);
   const handleConfirm = async () => {
     let data = await postDeleteUser(userDelete.id);
     if (data && data.EC === 0) {
-      fetchAllUsers();
       setShow(false);
+      fetchAllUsersWithPaginate(1);
       toast.success("Delete User Success !", { autoClose: 1000 });
     }
   };

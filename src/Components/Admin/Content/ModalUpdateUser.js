@@ -14,9 +14,10 @@ const ModalUpdateUser = (props) => {
     show,
     setShow,
     userUpdate,
+    currentPage,
     setUserUpdate,
-    fetchAllUsers,
     checkViewOrUpdate,
+    fetchAllUsersWithPaginate,
   } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +41,7 @@ const ModalUpdateUser = (props) => {
   const handleSubmit = async () => {
     await putUpdateUser(userUpdate.id, username, role, image);
     handleClose();
-    fetchAllUsers();
+    fetchAllUsersWithPaginate(currentPage);
     toast.success("Update User Success !", { autoClose: 1000 });
     return;
   };

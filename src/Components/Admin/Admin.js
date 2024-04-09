@@ -1,8 +1,6 @@
 import MySideBar from "./MySideBar";
 import "./Admin.scss";
 import { Outlet } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-
 const Admin = (props) => {
   return (
     <div className="admin-container">
@@ -14,7 +12,6 @@ const Admin = (props) => {
         <div className="admin-main">
           <Outlet />
         </div>
-        <ToastContainer />
       </div>
     </div>
   );

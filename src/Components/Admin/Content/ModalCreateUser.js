@@ -10,7 +10,7 @@ import { postCreatenewUser } from "../../../Services/apiServices";
 import "./ManagerUser.scss";
 import "react-toastify/dist/ReactToastify.css";
 const ModalCreateUser = (props) => {
-  const { show, setShow, fetchAllUsers } = props;
+  const { show, setShow, fetchAllUsersWithPaginate } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -52,7 +52,7 @@ const ModalCreateUser = (props) => {
     let data = await postCreatenewUser(email, password, username, role, image);
     if (data && data.EC === 0) {
       toast.success(data.EM, { autoClose: 1000 });
-      await fetchAllUsers();
+      await fetchAllUsersWithPaginate(1);
       handleClose();
     }
     if (data && data.EC !== 0) {
